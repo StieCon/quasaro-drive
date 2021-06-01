@@ -1,0 +1,16 @@
+﻿<Window x:Class="QuasaroDRV.Configuration.AdvancedSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:QuasaroDRV.Properties"
+        Title="{x:Static p:Strings.AdvancedSettingsWindowTitle}" Icon="/QuasaroDRV;component/Resources/settings.png" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner">
+    <StackPanel Orientation="Vertical" Margin="3,3,3,3">
+        <CheckBox Name="cbxShowRestartWebClientButton" Content="{x:Static p:Strings.AdvancedSettingsRestartWebClientButton}" Margin="5,2,15,2"/>
+        <CheckBox Name="cbxEnableShowLogMenu" Content="{x:Static p:Strings.AdvancedSettingsEnableShowLogMenu}" Margin="5,2,15,2"/>
+        <CheckBox Name="cbxPreloadMainWindow" Content="{x:Static p:Strings.AdvancedSettingsPreloadMainWindow}" Margin="5,2,15,2"/>
+        <CheckBox Name="cbxUseWindowsAPI" Content="{x:Static p:Strings.AdvancedSettingsUseWindowsApi}" Margin="5,2,15,5"/>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="ButtonCancel" Content="{x:Static p:Strings.ButtonCancelTitle}" Width="75" Margin="5,5,0,5" IsCancel="True" Click="ButtonCancel_Click" />
+            <Button Name="ButtonOK" Content="{x:Static p:Strings.ButtonOkayTitle}" Width="75" Margin="5,5,5,5" IsDefault="True" Click="ButtonOK_Click" />
+        </WrapPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "NetworkDriveServiceInstaller", "NetworkDriveServiceInstaller\NetworkDriveServiceInstaller.wixproj", "{3162CAA3-85CE-479B-BF13-DF3C615EC4D1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{144DD4CF-55AD-4E3D-A9EF-E3DA6162481E} = {144DD4CF-55AD-4E3D-A9EF-E3DA6162481E}
+		{7E2308EB-EFE3-44D3-9D04-261FF9807918} = {7E2308EB-EFE3-44D3-9D04-261FF9807918}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkDriveService", "NetworkDriveService\NetworkDriveService.csproj", "{7E2308EB-EFE3-44D3-9D04-261FF9807918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallerSuffixGenerator", "InstallerSuffixGenerator\InstallerSuffixGenerator.csproj", "{3F1E6E0A-525F-47F3-A972-048F678DB32F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallerCustomAction", "InstallerCustomAction\InstallerCustomAction.csproj", "{144DD4CF-55AD-4E3D-A9EF-E3DA6162481E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkDriveServiceElevation", "NetworkDriveServiceElevation\NetworkDriveServiceElevation.csproj", "{5955EFB9-3CC2-446A-9AE7-6A4194F1EF2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3162CAA3-85CE-479B-BF13-DF3C615EC4D1}.Debug|x86.ActiveCfg = Debug|x86
+		{3162CAA3-85CE-479B-BF13-DF3C615EC4D1}.Debug|x86.Build.0 = Debug|x86
+		{3162CAA3-85CE-479B-BF13-DF3C615EC4D1}.Release|x86.ActiveCfg = Release|x86
+		{3162CAA3-85CE-479B-BF13-DF3C615EC4D1}.Release|x86.Build.0 = Release|x86
+		{7E2308EB-EFE3-44D3-9D04-261FF9807918}.Debug|x86.ActiveCfg = Debug|x86
+		{7E2308EB-EFE3-44D3-9D04-261FF9807918}.Debug|x86.Build.0 = Debug|x86
+		{7E2308EB-EFE3-44D3-9D04-261FF9807918}.Release|x86.ActiveCfg = Release|x86
+		{7E2308EB-EFE3-44D3-9D04-261FF9807918}.Release|x86.Build.0 = Release|x86
+		{3F1E6E0A-525F-47F3-A972-048F678DB32F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3F1E6E0A-525F-47F3-A972-048F678DB32F}.Debug|x86.Build.0 = Debug|Any CPU
+		{3F1E6E0A-525F-47F3-A972-048F678DB32F}.Release|x86.ActiveCfg = Release|Any CPU
+		{3F1E6E0A-525F-47F3-A972-048F678DB32F}.Release|x86.Build.0 = Release|Any CPU
+		{144DD4CF-55AD-4E3D-A9EF-E3DA6162481E}.Debug|x86.ActiveCfg = Debug|x86
+		{144DD4CF-55AD-4E3D-A9EF-E3DA6162481E}.Debug|x86.Build.0 = Debug|x86
+		{144DD4CF-55AD-4E3D-A9EF-E3DA6162481E}.Release|x86.ActiveCfg = Release|x86
+		{144DD4CF-55AD-4E3D-A9EF-E3DA6162481E}.Release|x86.Build.0 = Release|x86
+		{5955EFB9-3CC2-446A-9AE7-6A4194F1EF2A}.Debug|x86.ActiveCfg = Debug|x86
+		{5955EFB9-3CC2-446A-9AE7-6A4194F1EF2A}.Debug|x86.Build.0 = Debug|x86
+		{5955EFB9-3CC2-446A-9AE7-6A4194F1EF2A}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A77FCAC-6380-4BE7-936D-48FAF68B7F2B}
+	EndGlobalSection
+EndGlobal

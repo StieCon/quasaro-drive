@@ -1,0 +1,41 @@
+﻿<Window x:Class="QuasaroDRV.DriveManagement.ExportDrivesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuasaroDRV.DriveManagement"
+        xmlns:p="clr-namespace:QuasaroDRV.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Strings.ExportWindowTitle}" SizeToContent="WidthAndHeight" Icon="/QuasaroDRV;component/Resources/export.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <StackPanel Orientation="Vertical" Margin="10">
+        <GroupBox Header="{x:Static p:Strings.ExportWindowPropertiesTitle}">
+            <StackPanel Orientation="Vertical" Margin="0,6,0,0">
+                <CheckBox Name="cbxStoreUsername" Content="{x:Static p:Strings.ExportWindowPropertyUsername}" IsChecked="True" />
+                <CheckBox Name="cbxStorePassword" IsEnabled="{Binding IsChecked, ElementName=cbxStoreUsername}" Content="{x:Static p:Strings.ExportWindowPropertyPassword}" Margin="0,5,0,0" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Margin="0,5,0,0">
+            <GroupBox.Header>
+                <CheckBox Name="cbxUseEncryption" Content="{x:Static p:Strings.ExportWindowUseEncryptionTitle}" IsChecked="True" />
+            </GroupBox.Header>
+            <Grid Margin="0,3,0,-3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=cbxUseEncryption}" Content="{x:Static p:Strings.ExportWindowEncryptionPassword}" Margin="0,0,15,0" />
+                <PasswordBox Name="tbxEncryptionPassword" IsEnabled="{Binding IsChecked, ElementName=cbxUseEncryption}" Grid.Row="0" Grid.Column="1" Width="150" Margin="0,3,0,3"/>
+                <Label Grid.Row="1" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=cbxUseEncryption}" Content="{x:Static p:Strings.ExportWindowEncryptionPasswordRepeat}" Margin="0,0,15,0" />
+                <PasswordBox Name="tbxEncryptionPasswordRepeat" IsEnabled="{Binding IsChecked, ElementName=cbxUseEncryption}" Grid.Row="1" Grid.Column="1" Width="150" Margin="0,3,0,3" />
+            </Grid>
+        </GroupBox>
+        <DockPanel LastChildFill="False" Margin="0,5,0,0">
+            <Button DockPanel.Dock="Right" Name="btnOK" Content="{x:Static p:Strings.ButtonOkayTitle}" IsDefault="True" Width="80" Margin="10,0,0,0" Click="btnOK_Click" />
+            <Button DockPanel.Dock="Right" Name="btnCancel" Content="{x:Static p:Strings.ButtonAbortTitle}" IsCancel="True" Width="80" Click="btnCancel_Click" />
+        </DockPanel>
+    </StackPanel>
+</Window>

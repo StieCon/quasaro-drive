@@ -1,0 +1,40 @@
+﻿<Window x:Class="QuasaroDRV.AppInfoWindows.CreditsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuasaroDRV"
+        xmlns:p="clr-namespace:QuasaroDRV.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Strings.CreditsWindowTitle}" Height="295.545" Width="374" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Icon="/QuasaroDRV;component/Resources/app_icon.ico">
+    <Grid Margin="0,0,0,0">
+        <TextBlock Text="{x:Static p:Strings.CreditsWindowTitle}" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="348" FontSize="16"/>
+        <StackPanel Margin="5,40,5,8.428">
+            <StackPanel Margin="0,5" VerticalAlignment="Top">
+                <Label Content="Newtonsoft.Json" FontWeight="Bold"/>
+                <TextBlock Margin="5,0,0,0">Copyright (c) 2007 James Newton-King -            
+                    <Hyperlink NavigateUri="https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md" RequestNavigate="Hyperlink_RequestNavigate">
+                        The MIT License (MIT)
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,5" VerticalAlignment="Top">
+                <Label Content="Apache log4net" FontWeight="Bold"/>
+                <TextBlock TextWrapping="Wrap" Margin="5,0,0,0"> Copyright 2004-2017 The Apache Software Foundation -            
+                    <Hyperlink NavigateUri="https://logging.apache.org/log4net/license.html" RequestNavigate="Hyperlink_RequestNavigate">
+                        Apache 2 License
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,5" VerticalAlignment="Top">
+                <Label Content="WiX Toolset" FontWeight="Bold"/>
+                <TextBlock TextWrapping="Wrap" Margin="5,0,0,0">           
+                    <Hyperlink NavigateUri="http://wixtoolset.org/about/license/" RequestNavigate="Hyperlink_RequestNavigate">
+                        Microsoft Reciprocal License (MS-RL)
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <Button x:Name="btnOsLicenses" Content="{x:Static p:Strings.ShowLicenses}" Margin="15,20,15,0" Click="btnOsLicenses_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

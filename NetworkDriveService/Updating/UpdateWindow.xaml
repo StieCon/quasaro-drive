@@ -1,0 +1,12 @@
+﻿<Window x:Class="QuasaroDRV.Updating.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:QuasaroDRV"
+        xmlns:p="clr-namespace:QuasaroDRV.Properties"
+        Title="{x:Static local:Branding.AutoUpdateTitle}" Height="97" Width="300" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" Icon="/QuasaroDRV;component/Resources/update.png" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ProgressBar x:Name="pbrProgress" Height="20" Margin="10,10,10,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonAbort" Content="{x:Static p:Strings.ButtonAbortTitle}" Margin="207,36,10,10" Click="ButtonAbort_Click" IsCancel="True"/>
+        <Button x:Name="ButtonUpdate" Content="{x:Static p:Strings.AutoUpdateButtonUpdateNowTitle}" Margin="118.99,36,92,10" IsEnabled="False" Click="ButtonUpdate_Click" IsDefault="True" Padding="4,1"/>
+    </Grid>
+</Window>

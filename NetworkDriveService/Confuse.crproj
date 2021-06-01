@@ -1,0 +1,7 @@
+<project outputDir="" baseDir="" xmlns="http://confuser.codeplex.com">
+  <rule pattern="match-type-name('ServerAuthorization')" inherit="false">
+    <protection id="constants" />
+    <protection id="ctrl flow" />
+    <protection id="resources" />
+  </rule>
+</project>

@@ -1,0 +1,183 @@
+﻿<Controls:MetroWindow x:Class="QuasaroDRV.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:QuasaroDRV"
+        xmlns:p="clr-namespace:QuasaroDRV.Properties"
+        xmlns:drv="clr-namespace:QuasaroDRV.DriveManagement"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="{x:Static local:Branding.ApplicationName}" SizeToContent="WidthAndHeight" Closing="Window_Closing" MinWidth="670" MinHeight="350" WindowStartupLocation="CenterScreen" PreviewKeyDown="Window_PreviewKeyDown" Height="343" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Separator}">
+                        <Grid SnapsToDevicePixels="true" Margin="0,0,0,0">
+                            <Rectangle Height="1"
+                               Margin="30,0,1,1"
+                               Fill="#E0E0E0"/>
+                            <Rectangle Height="1"
+                               Margin="30,1,1,0"
+                               Fill="White"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="{x:Static p:Strings.MainWindowMenuDrivesTitle}">
+                <MenuItem Name="MenuAddDrive" Header="{x:Static p:Strings.MainWindowMenuAddDriveTitle}" Click="Menu_AddDrive_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuAddDriveIcon" Source="/QuasaroDRV;component/Resources/add.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="MenuEditDrive" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuEditDriveTitle}" Click="Menu_EditDrive_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuEditDriveIcon" Source="/QuasaroDRV;component/Resources/edit_grey.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="MenuRemoveDrive" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuRemoveDriveTitle}" Click="Menu_RemoveDrive_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuRemoveDriveIcon" Source="/QuasaroDRV;component/Resources/remove_grey.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Name="MenuExportSelectedDrives" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuExportSelectedTitle}" Click="Menu_ExportSelectedDrives_Click" />
+                <MenuItem Name="MenuExportAllDrives" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuExportAllTitle}" Click="Menu_ExportAllDrives_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuExportAllDrivesIcon" Source="/QuasaroDRV;component/Resources/export_grey.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="MenuImportDrives" Header="{x:Static p:Strings.MainWindowMenuImportTitle}" Click="Menu_ImportDrive_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuImportDrivesIcon" Source="/QuasaroDRV;component/Resources/import.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="{x:Static p:Strings.MainWindowMenuCloseTitle}" Click="Menu_CloseWindow_Click" />
+            </MenuItem>
+            <MenuItem Name="MenuConnections" Header="{x:Static p:Strings.MainWindowMenuConnectingTitle}">
+                <MenuItem Name="MenuConnectSelected" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuConnectSelectedTitle}" Click="Menu_ConnectSelected_Click" />
+                <MenuItem Name="MenuDisconnectSelected" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuDisconnectSelectedTitle}" Click="Menu_DisconnectSelected_Click" />
+                <Separator />
+                <MenuItem Name="MenuConnectAll" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuConnectAllTitle}" Click="Menu_ConnectAll_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuConnectAllIcon" Source="/QuasaroDRV;component/Resources/connect_grey.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="MenuDisconnectAll" IsEnabled="False" Header="{x:Static p:Strings.MainWindowMenuDisconnectAllTitle}" Click="Menu_DisconnectAll_Click" />
+                <Separator Name="SeparatorRestartWebClient" />
+                <MenuItem Name="MenuRestartWebClient" Click="MenuRestartWebClient_Click" Header="{x:Static p:Strings.MainWindowMenuRestartWebClientTitle}" />
+            </MenuItem>
+            <MenuItem Header="{x:Static p:Strings.MainWindowMenuApplicationTitle}">
+                <MenuItem Name="MenuCheckForUpdates" Header="{x:Static p:Strings.MainWindowMenuCheckForUpdatesTitle}" Click="Menu_CheckForUpdates_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuCheckForUpdatesIcon" Source="/QuasaroDRV;component/Resources/update.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="{x:Static p:Strings.MainWindowMenuOptionsTitle}" Click="MenuOptions_Click">
+                    <MenuItem.Icon>
+                        <Image Name="MenuOptionsIcon" Source="/QuasaroDRV;component/Resources/settings.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Strings.MainWindowMenuAboutTitle}" Click="Menu_About_Click" />
+            </MenuItem>
+        </Menu>
+        
+        <DockPanel DockPanel.Dock="Bottom" Margin="5,0,5,5">
+            <Button Name="AddDrive" DockPanel.Dock="Left" Content="{x:Static p:Strings.MainWindowButtonAddDriveTitle}" HorizontalAlignment="Left" Margin="0,0,5,0" VerticalAlignment="Bottom" Width="85" Click="AddDrive_Click" />
+            <Button Name="EditDrive" DockPanel.Dock="Left" Content="{x:Static p:Strings.MainWindowButtonEditDriveTitle}" HorizontalAlignment="Left" Margin="0,0,5,0" VerticalAlignment="Bottom" Width="85" IsEnabled="False" Click="EditDrive_Click" />
+            <Button Name="RemoveDrive" DockPanel.Dock="Left" Content="{x:Static p:Strings.MainWindowButtonRemoveDriveTitle}" HorizontalAlignment="Left" Margin="0,0,5,0" VerticalAlignment="Bottom" Width="85" IsEnabled="False" Click="RemoveDrive_Click" />
+
+            <Button DockPanel.Dock="Right" Content="{x:Static p:Strings.ButtonCloseTitle}" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Bottom" Width="80" Click="Close_Click" />
+
+            <Button Name="ConnectAll" DockPanel.Dock="Left" Content="{x:Static p:Strings.MainWindowButtonReconnectAllTitle}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Bottom" Width="140" IsEnabled="False" Click="ConnectAll_Click" />
+        </DockPanel>
+
+        <ListView Name="drivesListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" SelectionChanged="drivesListView_SelectionChanged" MouseDoubleClick="drivesListView_MouseDoubleClick" SelectionMode="Extended">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnConnectedTitle}" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                    <CheckBox Name="cbxConnected" IsEnabled="{Binding IsIdle}" IsChecked="{Binding IsConnectedCached}" Margin="0,0,0,0"/>
+                                    <Image Name="imgStatus" Margin="0,0,0,0" VerticalAlignment="Center" Height="12" ToolTip="{Binding LastErrorMessage}">
+                                        <Image.Style>
+                                            <Style TargetType="{x:Type Image}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State}" Value="{x:Static drv:NetworkDriveStates.Connected}">
+                                                        <Setter Property="Source" Value="/QuasaroDRV;component/Resources/StatusOK_12x.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State}" Value="{x:Static drv:NetworkDriveStates.Error}">
+                                                        <Setter Property="Source" Value="/QuasaroDRV;component/Resources/StatusWarning_12x11.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State}" Value="{x:Static drv:NetworkDriveStates.Processing}">
+                                                        <Setter Property="Source" Value="/QuasaroDRV;component/Resources/Activity_12x.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State}" Value="{x:Static drv:NetworkDriveStates.Disconnected}">
+                                                        <Setter Property="Source" Value="/QuasaroDRV;component/Resources/ConnectGrey_12x.png"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnDriveLetterTitle}" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LocalDriveLetter}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnConnectOnStartupTitle}" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding ConnectOnStartup}" Margin="0,0,0,0" Checked="CheckBoxConnectOnStartup_Checked" Unchecked="CheckBoxConnectOnStartup_Unchecked" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnDriveLabelTitle}" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ExpandedDriveLabel}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnRemoteAddressTitle}" Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ExpandedRemoteAddress}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnUserNameTitle}" Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Username}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static p:Strings.MainWindowListColumnCredentialsSavedTitle}" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding HasCredentialsHumanReadable}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</Controls:MetroWindow>

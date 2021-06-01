@@ -1,0 +1,1306 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Licensing</name>
+    </assembly>
+    <members>
+        <member name="T:Licensing.BindingHintSystemProperties">
+            <summary>
+            Defines sytem properties for binding hints.
+            </summary>
+        </member>
+        <member name="F:Licensing.BindingHintSystemProperties.OperatingSystem">
+            <summary>
+            Operating system name and version.
+            </summary>
+        </member>
+        <member name="F:Licensing.BindingHintSystemProperties.HostName">
+            <summary>
+            Local host name.
+            </summary>
+        </member>
+        <member name="F:Licensing.BindingHintSystemProperties.Domain">
+            <summary>
+            Configured domain name.
+            </summary>
+        </member>
+        <member name="F:Licensing.BindingHintSystemProperties.UserName">
+            <summary>
+            Local user name.
+            </summary>
+        </member>
+        <member name="T:Licensing.Binding">
+            <summary>
+            Represents a license binding with parameters.
+            </summary>
+        </member>
+        <member name="P:Licensing.Binding.Id">
+            <summary>
+            The BindingId as used in licenses.
+            </summary>
+        </member>
+        <member name="P:Licensing.Binding.Hint">
+            <summary>
+            A hint message to display in the license server backend.
+            </summary>
+        </member>
+        <member name="M:Licensing.Binding.#ctor(System.String,System.String)">
+            <summary>
+            Create a new binding for a BindingId and a hint.
+            </summary>
+            <param name="id">BindingId</param>
+            <param name="hint">Hint message</param>
+        </member>
+        <member name="M:Licensing.Binding.#ctor(System.String)">
+            <summary>
+            Create a new binding without a hint.
+            </summary>
+            <param name="id">BindingId</param>
+        </member>
+        <member name="M:Licensing.Binding.Clone">
+            <summary>
+            Creates a deep copy of this instance of Binding.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Binding.AllSystemProperties">
+            <summary>
+            Create a list of all available system properties for binding hints.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Binding.AllSystemPropertiesExcept(Licensing.BindingHintSystemProperties[])">
+            <summary>
+            Creates a list of all available system properties for binding hints but excludes all properties in except.
+            </summary>
+            <param name="except">Properties to exclude from the returned list</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Binding.WithSystemPropertiesHint(System.String,Licensing.BindingHintSystemProperties[])">
+            <summary>
+            Creates a new binding and sets the hint to the given system properties.
+            </summary>
+            <param name="bindingId">BindingId</param>
+            <param name="properties">List of selected system properties</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.DeviceIdGenerator.GenerateDeviceId">
+            <summary>
+            Genberate new device id
+            </summary>
+            <returns>device id</returns>
+        </member>
+        <member name="M:Licensing.DeviceIdGenerator.GenerateFromHardwareId">
+            <summary>
+            Generate from hardware
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Licensing.EnterLicenseDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Licensing.EnterLicenseDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Licensing.EnterLicenseDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Licensing.HashGenerator">
+            <summary>
+            Provides an interface to the hashing functions and asymmetric signature checking.
+            </summary>
+        </member>
+        <member name="M:Licensing.HashGenerator.SignHash(System.String,System.String)">
+            <summary>
+            Computes a signature for the given hash using the private key.
+            </summary>
+            <param name="hash">The hash of the original message</param>
+            <param name="privateKey">Private key to use for signing</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.CheckSignature(System.String,System.String)">
+            <summary>
+            Checks the signature for a given hash.
+            </summary>
+            <param name="hash">The hash of the original message</param>
+            <param name="signature">The signature of the hash</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.ComputeLicenseHash(Licensing.License)">
+            <summary>
+            Computes the hash for a License.
+            </summary>
+            <param name="lic">Hashing subject</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.ComputeResponseHash(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Computes the hash for a Json-Object.
+            </summary>
+            <param name="data">Hashing subject</param>
+            <param name="nonce">Randomness parameter</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.ComputeHash(System.String)">
+            <summary>
+            Computes the hash for a string.
+            </summary>
+            <param name="str">Hashing subject</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.ComputeHash(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Computes the hash for a Json-Token.
+            </summary>
+            <param name="token">Hashing subject</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.GetUnifiedJsonStringFromString(System.String)">
+            <summary>
+            Constructs a unified Json string with identifies the given JToken (will first be parsed) and does not change with differing sorting orders in JObject collections.
+            </summary>
+            <param name="str">Json-encoded hashing subject</param>
+        </member>
+        <member name="M:Licensing.HashGenerator.GetUnifiedJsonString(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Constructs a unified Json string with identifies the given JToken and does not change with differing sorting orders in JObject collections.
+            </summary>
+            <param name="token">JToken to generate unified json string for</param>
+        </member>
+        <member name="M:Licensing.HashGenerator.IsLegacyCache(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Returns true when obj contains a license cache of a pre 1.2 version.
+            </summary>
+            <param name="obj">Cache object to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.LegacySignHash(System.String,System.String)">
+            <summary>
+            Computes a signature for the given hash using the private key.
+            </summary>
+            <param name="hash">The hash of the original message</param>
+            <param name="privateKey">Private key to use for signing</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.LegacyCheckSignature(System.String,System.String)">
+            <summary>
+            Checks the signature for a given hash assuming a pre 1.2 version.
+            </summary>
+            <param name="hash">The hash of the original message</param>
+            <param name="signature">The signature of the hash</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.LegacyComputeLicenseHash(Licensing.License)">
+            <summary>
+            Computes the hash for a License using the pre 1.2 hashing function.
+            </summary>
+            <param name="lic">Hashing subject</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.HashGenerator.UnlockHashingMethods(System.String,System.String)">
+            <summary>
+            Unlocks the hashing methods. This method must be called before initializing a Licenser.
+            </summary>
+            <param name="token">Token for activation</param>
+            <param name="appPath">Path to search for the "Hashing.dll" file</param>
+        </member>
+        <member name="M:Licensing.HashGenerator.UnlockHashingMethods(System.String)">
+            <summary>
+            Unlocks the hashing methods. This method must be called before initializing a Licenser.
+            Searches the application dir for the "Hashing.dll" file.
+            </summary>
+            <param name="token">Token for activation</param>
+        </member>
+        <member name="M:Licensing.HashGenerator.HashingMethodsUnlocked">
+            <summary>
+            Returns true when the hashing methods have been unlocked.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Licensing.License">
+            <summary>
+            Represents a license.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.LicenseFile">
+            <summary>
+            Path to the license file in cache.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.LicenseKey">
+            <summary>
+            Immutable identification of the license.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.Binding">
+            <summary>
+            Current Binding for the license.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.BindingId">
+            <summary>
+            Current BindingId for the license.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.CanExpire">
+            <summary>
+            Returns whether the license can expire.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.ExpirationDate">
+            <summary>
+            Last date when the licenses can be used.
+            Throws an InvalidOperationException when CanExpire is false.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.LastCheckDate">
+            <summary>
+            DateTime when the license was last checked online.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.IsOfflineLicense">
+            <summary>
+            Returns whether the license is an offline license. This means the NextCheckDate property is set and overrides the local cache expiration policy.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.NextCheckDate">
+            <summary>
+            DateTime when to check the license again. This overrides the local cache expiration policy.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.ExtraData">
+            <summary>
+            Application specific data about the license.
+            </summary>
+        </member>
+        <member name="P:Licensing.License.IsLegacyLicense">
+            <summary>
+            Returns true when this instance contains a license of a pre 1.2 version.
+            </summary>
+        </member>
+        <member name="M:Licensing.License.UpdateLicense(Licensing.License)">
+            <summary>
+            Sets the last checked date to today and copies the additional data from prototype
+            </summary>
+            <param name="prototype"></param>
+        </member>
+        <member name="M:Licensing.License.IsExpired">
+            <summary>
+            Returns wether the license has expired.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.IsCacheExpired(System.Boolean)">
+            <summary>
+            Returns wether the license has not been checked online within a given time. Will return false if the last check date lies in the future. The application should not accept licenses whose cache is expired.
+            </summary>
+            <param name="allowOfflineLicenses">When set to false, the next check date will be ignored.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.IsValid(System.Boolean)">
+            <summary>
+            Returns wether the license can be used at the current time.
+            </summary>
+            <param name="allowOfflineLicenses">When set to false, the next check date will be ignored.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.MakeOffline(System.String,System.DateTime)">
+            <summary>
+            Convert the license to an offline license.
+            </summary>
+            <param name="bindingId">BindingId to lock the license to</param>
+            <param name="expirationDate">Next date to force license checking</param>
+        </member>
+        <member name="M:Licensing.License.UpdateSignature(System.String)">
+            <summary>
+            Update the license signature after changes have been made.
+            </summary>
+            <param name="signature">New signature</param>
+        </member>
+        <member name="M:Licensing.License.WriteToFile(System.String)">
+            <summary>
+            Writes the license to a file.
+            </summary>
+            <param name="file">Target file</param>
+        </member>
+        <member name="M:Licensing.License.ToString">
+            <summary>
+            Returns the Json representation of this license.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.ReadFromFile(System.String)">
+            <summary>
+            Reads a license from a file and checks for integrity.
+            </summary>
+            <param name="file">Source file</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.ReadFromJsonCache(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Reads a license from a json object and checks for integrity.
+            </summary>
+            <param name="obj">Source object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.ReadFromLicenseServerResponse(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Reads a license from a license server response and checks for integrity.
+            </summary>
+            <param name="obj">Response object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.License.MakeOfflineLicense(System.String,System.String,Newtonsoft.Json.Linq.JObject,System.DateTime)">
+            <summary>
+            Create a new license with the given arguments for offline usage.
+            </summary>
+            <param name="licenseKey"></param>
+            <param name="bindingId"></param>
+            <param name="extraData"></param>
+            <param name="expirationDate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Licensing.LicenseStates">
+            <summary>
+            Describes the different states a license can be in.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.Invalid">
+            <summary>
+            The license is invalid.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.NotCached">
+            <summary>
+            A suitable license was not found in the cache.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.CacheExpired">
+            <summary>
+            The license has not been synced with the license server in a while.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.LicenseExpired">
+            <summary>
+            The license is expired.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.BoundElsewhere">
+            <summary>
+            The license is bound to another binding id.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.BindingLimitReached">
+            <summary>
+            The license is bound to too many other binding ids.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.KeyNotValid">
+            <summary>
+            The entered license key is not valid.
+            </summary>
+        </member>
+        <member name="F:Licensing.LicenseStates.Valid">
+            <summary>
+            The license is valid an can be used.
+            </summary>
+        </member>
+        <member name="T:Licensing.DetachLicenseResults">
+            <summary>
+            Possible results for detach license calls.
+            </summary>
+        </member>
+        <member name="F:Licensing.DetachLicenseResults.Invalid">
+            <summary>
+            The returned response was not valid.
+            </summary>
+        </member>
+        <member name="F:Licensing.DetachLicenseResults.Success">
+            <summary>
+            The license has been detached.
+            </summary>
+        </member>
+        <member name="F:Licensing.DetachLicenseResults.NotAvailable">
+            <summary>
+            The binding exists but cannot be detached at the moment.
+            </summary>
+        </member>
+        <member name="F:Licensing.DetachLicenseResults.LicenseNotFound">
+            <summary>
+            The license key was not found.
+            </summary>
+        </member>
+        <member name="F:Licensing.DetachLicenseResults.BindingNotFound">
+            <summary>
+            The license binding does not exist.
+            </summary>
+        </member>
+        <member name="T:Licensing.RequestDemoKeyResults">
+            <summary>
+            Possible results for a demo key request.
+            </summary>
+        </member>
+        <member name="F:Licensing.RequestDemoKeyResults.Error">
+            <summary>
+            An unknown error occured.
+            </summary>
+        </member>
+        <member name="F:Licensing.RequestDemoKeyResults.Success">
+            <summary>
+            The demo key was sent to the given E-Mail address.
+            </summary>
+        </member>
+        <member name="F:Licensing.RequestDemoKeyResults.DemoAlreadyUsed">
+            <summary>
+            A demo for this application was already used by this customer.
+            </summary>
+        </member>
+        <member name="F:Licensing.RequestDemoKeyResults.NoDemoAvailable">
+            <summary>
+            Demo keys are not available for this application.
+            </summary>
+        </member>
+        <member name="F:Licensing.RequestDemoKeyResults.CustomerRegistrationFailed">
+            <summary>
+            An error occured while registering the customer.
+            </summary>
+        </member>
+        <member name="T:Licensing.CustomerData">
+            <summary>
+            Holds information about a customer.
+            </summary>
+        </member>
+        <member name="P:Licensing.CustomerData.Name">
+            <summary>
+            Name or company of the customer.
+            </summary>
+        </member>
+        <member name="P:Licensing.CustomerData.EMail">
+            <summary>
+            Contact E-Mail address.
+            </summary>
+        </member>
+        <member name="P:Licensing.CustomerData.Phone">
+            <summary>
+            Contact phone number.
+            </summary>
+        </member>
+        <member name="P:Licensing.CustomerData.City">
+            <summary>
+            City of the customer or company.
+            </summary>
+        </member>
+        <member name="P:Licensing.CustomerData.Zip">
+            <summary>
+            Zip code of the city.
+            </summary>
+        </member>
+        <member name="P:Licensing.CustomerData.Street">
+            <summary>
+            Street and house number of the customer or company.
+            </summary>
+        </member>
+        <member name="M:Licensing.CustomerData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new customer from base data.
+            </summary>
+            <param name="name">Name or company</param>
+            <param name="email">Conctact E-Mail address</param>
+            <param name="phone">Contact phone number</param>
+            <param name="city">City of the customer or company</param>
+            <param name="zip">Zip code of the city</param>
+            <param name="street">Street and house number</param>
+        </member>
+        <member name="T:Licensing.Licenser">
+            <summary>
+            Manages the local license cache, license validation and license server communication.
+            </summary>
+        </member>
+        <member name="P:Licensing.Licenser.Log">
+            <summary>
+            Gets or sets the log used by the Licenser and all helper classes.
+            </summary>
+        </member>
+        <member name="P:Licensing.Licenser.LicensesPath">
+            <summary>
+            Returns the local license cache directory.
+            </summary>
+        </member>
+        <member name="P:Licensing.Licenser.DeviceId">
+            <summary>
+            Gets the device id of the local machine.
+            </summary>
+        </member>
+        <member name="P:Licensing.Licenser.AllowOfflineLicenses">
+            <summary>
+            Gets or sets if the licenser will accept offline licenses.
+            </summary>
+        </member>
+        <member name="P:Licensing.Licenser.Licenses">
+            <summary>
+            Gets a list of all installed licenses. This list may contain expired or invalid licenses.
+            </summary>
+        </member>
+        <member name="M:Licensing.Licenser.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new Licenser given the application and system parameters.
+            </summary>
+            <param name="licensesPath">Local directory path to store the registered licenses</param>
+            <param name="applicationName">The application name as registered in the "Name"-Column in the license portal</param>
+            <param name="softwareVersion">The software Version string like "1.0.3.0"</param>
+            <param name="systemLanguage">The operating system language like "de_DE"</param>
+            <param name="licenserUrl">The Address of the license server</param>
+        </member>
+        <member name="M:Licensing.Licenser.ReloadLicenses">
+            <summary>
+            Loads all licenses from the local storage. All unsaved changes to previously loaded licenses are lost.
+            </summary>
+        </member>
+        <member name="M:Licensing.Licenser.SaveLicenses">
+            <summary>
+            Writes all licenses back to the local storage. Has only to be executed when licenses are changed.
+            </summary>
+        </member>
+        <member name="M:Licensing.Licenser.SaveLicense(Licensing.License)">
+            <summary>
+            Writes the license to the local storage and re-uses the previous filename. When the license is not in storage yet, a random filename is generated.
+            </summary>
+            <param name="license"></param>
+        </member>
+        <member name="M:Licensing.Licenser.DeleteLicenseFromCache(Licensing.License)">
+            <summary>
+            Deletes the local cache for the license.
+            </summary>
+            <param name="license"></param>
+        </member>
+        <member name="M:Licensing.Licenser.DetachLicense(Licensing.License,System.DateTime@)">
+            <summary>
+            Detaches the binding from the given license if available.
+            When DetachLicenseResults.NotAvailable is returned, availableAt will be set to the next possible date for detaching.
+            </summary>
+            <param name="license">A bound license to detach</param>
+            <param name="availableAt">The DateTime from when detaching is available</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.GetCachedLicense(Licensing.Binding,Licensing.License@)">
+            <summary>
+            Tries to get a license from the local storage bound to the given id. This method will not check online for licenses.
+            </summary>
+            <param name="binding">Binding id to bind to.</param>
+            <param name="license">The license from local storage. Will be set, unless LicenseStates.NotCached is returned.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.GetValidCachedLicenses(Licensing.Binding)">
+            <summary>
+            Returns an array of all installed, valid licenses bound to the given binding id.
+            </summary>
+            <param name="binding">Binding id to check for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.GetValidCachedLicenses">
+            <summary>
+            Returns an array of all installed, valid licenses.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.RegisterLicense(System.String,Licensing.Binding,Licensing.License@)">
+            <summary>
+            Checks online for the license key. Also acquires a binding to the given binding id and stores it in the local cache. The result is verified by CheckLicense and can be used for activation.
+            </summary>
+            <param name="licenseKey">License key to query the server for.</param>
+            <param name="binding">Acquires a binding to this binding id.</param>
+            <param name="license">The downloaded license. Will be set, unless LicenseStates.KeyNotValid is returned.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.GetLicenseState(Licensing.License)">
+            <summary>
+            Returns the license state of the license. This method does not reload attached information from the license server.
+            </summary>
+            <param name="license">License to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.RequestDemoKey(Licensing.CustomerData)">
+            <summary>
+            Register a new customer and order a demo key for the application of the licenser. The key will be sent to the customers E-Mail address.
+            </summary>
+            <param name="customerData">Customer data for registration</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.SendPostRequest(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Send Post request to license server.
+            </summary>
+            <param name="action">Remote action to call</param>
+            <param name="data">Attached information of the request</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.Licenser.CheckSystemTime">
+            <summary>
+            Checks wether the current system time might have been changed to fool the licensing system.
+            </summary>
+        </member>
+        <member name="T:Licensing.ILicenserLog">
+            <summary>
+            Interface for basic logging functionalities.
+            </summary>
+        </member>
+        <member name="M:Licensing.ILicenserLog.Debug(System.String)">
+            <summary>
+            Write a debug entry.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.ILicenserLog.Info(System.String)">
+            <summary>
+            Write an information entry.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.ILicenserLog.Warning(System.String)">
+            <summary>
+            Write a warning.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.ILicenserLog.Warning(System.String,System.Exception)">
+            <summary>
+            Write a warning with exception attached.
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Licensing.ILicenserLog.Error(System.String)">
+            <summary>
+            Write an error.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.ILicenserLog.Error(System.String,System.Exception)">
+            <summary>
+            Write an error with exception attached.
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="T:Licensing.SilentLicenserLog">
+            <summary>
+            A default silent logger, which discards all log calls.
+            </summary>
+        </member>
+        <member name="M:Licensing.SilentLicenserLog.Debug(System.String)">
+            <summary>
+            Discards the log call.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.SilentLicenserLog.Info(System.String)">
+            <summary>
+            Discards the log call.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.SilentLicenserLog.Warning(System.String)">
+            <summary>
+            Discards the log call.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.SilentLicenserLog.Warning(System.String,System.Exception)">
+            <summary>
+            Discards the log call.
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Licensing.SilentLicenserLog.Error(System.String)">
+            <summary>
+            Discards the log call.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.SilentLicenserLog.Error(System.String,System.Exception)">
+            <summary>
+            Discards the log call.
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="T:Licensing.StdOutLicenserLog">
+            <summary>
+            A default logger which prints all log calls using Console.WriteLine().
+            </summary>
+        </member>
+        <member name="M:Licensing.StdOutLicenserLog.Debug(System.String)">
+            <summary>
+            Write a debug entry.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.StdOutLicenserLog.Info(System.String)">
+            <summary>
+            Write an information.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.StdOutLicenserLog.Warning(System.String)">
+            <summary>
+            Write a warning.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.StdOutLicenserLog.Warning(System.String,System.Exception)">
+            <summary>
+            Write a warning with exception attached.
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Licensing.StdOutLicenserLog.Error(System.String)">
+            <summary>
+            Write an error.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Licensing.StdOutLicenserLog.Error(System.String,System.Exception)">
+            <summary>
+            Write an error with exception attached.
+            </summary>
+            <param name="message"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="F:Licensing.OfflineLicenseDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Licensing.OfflineLicenseDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Licensing.OfflineLicenseDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Licensing.RequestDemoKeyDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Licensing.RequestDemoKeyDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Licensing.RequestDemoKeyDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Licensing.AcquireLicenseArgs">
+            <summary>
+            Provides information about the result of an async license acquisition.
+            </summary>
+        </member>
+        <member name="P:Licensing.AcquireLicenseArgs.Success">
+            <summary>
+            Returns true when a valid license was found.
+            </summary>
+        </member>
+        <member name="P:Licensing.AcquireLicenseArgs.License">
+            <summary>
+            Returns a valid license. Null when Success is false.
+            </summary>
+        </member>
+        <member name="P:Licensing.AcquireLicenseArgs.Exception">
+            <summary>
+            Returns an Exception object if unexpected errors have occured, otherwise null.
+            </summary>
+        </member>
+        <member name="M:Licensing.AcquireLicenseArgs.#ctor">
+            <summary>
+            Creates an unsuccessfull result without an unhandled exception.
+            </summary>
+        </member>
+        <member name="M:Licensing.AcquireLicenseArgs.#ctor(Licensing.License)">
+            <summary>
+            Creates a successfull result with attached license.
+            </summary>
+            <param name="license"></param>
+        </member>
+        <member name="M:Licensing.AcquireLicenseArgs.#ctor(System.Exception)">
+            <summary>
+            Creates an unsuccessfull result caused by an unhandled exception.
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="T:Licensing.DetachLicenseBindingArgs">
+            <summary>
+            Provides information about a license binding detachement.
+            </summary>
+        </member>
+        <member name="P:Licensing.DetachLicenseBindingArgs.Success">
+            <summary>
+            Returns true when a valid license was found.
+            </summary>
+        </member>
+        <member name="P:Licensing.DetachLicenseBindingArgs.License">
+            <summary>
+            Returns a valid license. Null when Success is false.
+            </summary>
+        </member>
+        <member name="P:Licensing.DetachLicenseBindingArgs.Exception">
+            <summary>
+            Returns an Exception object if unexpected errors have occured, otherwise null.
+            </summary>
+        </member>
+        <member name="M:Licensing.DetachLicenseBindingArgs.#ctor(Licensing.License,System.Boolean)">
+            <summary>
+            Creates a successfull result with attached license.
+            </summary>
+            <param name="license">The license which should be detached.</param>
+            <param name="success">Result of detaching.</param>
+        </member>
+        <member name="M:Licensing.DetachLicenseBindingArgs.#ctor(Licensing.License,System.Exception)">
+            <summary>
+            Creates an unsuccessfull result caused by an unhandled exception.
+            </summary>
+            <param name="license">The license which should be detached.</param>
+            <param name="ex">Raised exception during detaching.</param>
+        </member>
+        <member name="T:Licensing.WorkerDelegate">
+            <summary>
+            Delegate for calling a worker function in another thread.
+            </summary>
+            <param name="workerFunc"></param>
+        </member>
+        <member name="T:Licensing.AcquireLicenseCallback">
+            <summary>
+            Delegate for an async license acquisition callback.
+            </summary>
+            <param name="result">An instance of AcquireLicenseArgs containing the acquired license parameters.</param>
+        </member>
+        <member name="T:Licensing.DetachLicenseBindingCallback">
+            <summary>
+            Delegate for an async license binding detaching callback.
+            </summary>
+            <param name="result">An instance of DetachLicenseBindingArgs containing the detaching result.</param>
+        </member>
+        <member name="T:Licensing.UserInteraction">
+            <summary>
+            Provides a default user interface for standard operations.
+            </summary>
+        </member>
+        <member name="T:Licensing.UserInteraction.Win32WpfWindow">
+            <summary>
+            Wrapper class to set a Wpf-Window as owner of a Windows Form.
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.DefaultThreadInvoker">
+            <summary>
+            Default function to invoke when accessing the UserInteraction class from the STA thread.
+            Use this delegate to run a worker in your application context.
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.StaThreadInvoker">
+            <summary>
+            Function to invoke a worker in the STA thread. Will start a new STA thread by default.
+            Use this delegate to run a worker in your application context.
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.ShowRequestDemo">
+            <summary>
+            Gets or sets whether a button to create a demo license should be shown in the enter license dialog.
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.OwnerWindow">
+            <summary>
+            The owner window for all dialogs.
+            </summary>
+        </member>
+        <member name="M:Licensing.UserInteraction.SetOwnerFromWpfWindow(System.Windows.Window)">
+            <summary>
+            Set the owner window from a Wpf Window.
+            </summary>
+            <param name="window"></param>
+        </member>
+        <member name="M:Licensing.UserInteraction.BeginAcquireLicense(Licensing.Licenser,Licensing.Binding,Licensing.AcquireLicenseCallback)">
+            <summary>
+            Calls AcquireLicense in a separate thread and invokes the given callback afterwards.
+            
+            Make sure to set the UI environment before calling this method.
+            </summary>
+            <param name="licenser">The licenser to use for activation</param>
+            <param name="binding">The Binding-ID to register or check the license</param>
+            <param name="callback">The callback to invoke afterwards</param>
+        </member>
+        <member name="M:Licensing.UserInteraction.AcquireLicense(Licensing.Licenser,Licensing.Binding,Licensing.License@)">
+            <summary>
+            Reads a license from cache and checks it for validity. If no license is found, the user will be prompted to enter one.
+            This method can be used as single entry point for license checking. When this method returns true, the returned license can be used.
+            
+            Make sure to set the UI environment before calling this method.
+            </summary>
+            <param name="licenser">The licenser to use for activation</param>
+            <param name="binding">The Binding-ID to register or check the license</param>
+            <param name="license">The output license</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.RequestDemo(Licensing.Licenser)">
+            <summary>
+            Opens a dialog to request a demo key for the given licensers application. Returns true when a key was successfully requested.
+            </summary>
+            <param name="licenser">Licenser bound to the application</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.BeginDetachLicenseBinding(Licensing.Licenser,Licensing.License,Licensing.DetachLicenseBindingCallback)">
+            <summary>
+            Detaches the license binding and displays a result message. Invokes the given callback afterwards.
+            
+            Make sure to set the UI environment before calling this method.
+            </summary>
+            <param name="licenser">The licenser to use for activation</param>
+            <param name="license">A bound license to detach</param>
+            <param name="callback">The callback to invoke afterwards</param>
+        </member>
+        <member name="M:Licensing.UserInteraction.DetachLicenseBinding(Licensing.Licenser,Licensing.License)">
+            <summary>
+            Detaches the license binding and displays a result message. Returns true when the binding was detached, otherwise false.
+            
+            Make sure to set the UI environment before calling this method.
+            </summary>
+            <param name="licenser">The licenser to use for activation</param>
+            <param name="license">A bound license to detach</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.GetLicenseStateMessage(Licensing.LicenseStates)">
+            <summary>
+            Returns the localized message for a given license state.
+            </summary>
+            <param name="state">The license state to return a localized message for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.GetDetachLicenseResultMessage(Licensing.DetachLicenseResults)">
+            <summary>
+            Returns the localized message for a given detach license binding response.
+            </summary>
+            <param name="result">The response to return a localized message for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.GetRequestDemoKeyResultMessage(Licensing.RequestDemoKeyResults)">
+            <summary>
+            Returns the localized message for a given demo request response.
+            </summary>
+            <param name="result">The response to return a localized message for</param>
+            <returns></returns>
+        </member>
+        <member name="T:Licensing.UserInteraction.Localization">
+            <summary>
+            Provides localized strings for user interaction.
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.CultureName">
+            <summary>
+            Name of the corresponding culture like "de-DE" or "en-US".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.ApplicationName">
+            <summary>
+            The name of the application.
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.EnterLicenseWindowTitle">
+            <summary>
+            A localized string like "Enter license key".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.EnterLicenseWindowDescription">
+            <summary>
+            A localized string like "Please enter your license key below:".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.ButtonOkayTitle">
+            <summary>
+            A localized string like "OK".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.ButtonCancelTitle">
+            <summary>
+            A localized string like "Cancel".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.OfflineLicenseTitle">
+            <summary>
+            A localized string like "Offline License".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.BindingIdTitle">
+            <summary>
+            A localized string like "This is your BindingId:".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.OfflineLicenseExplanation">
+            <summary>
+            A localized string like "Click the "Import"-Button and select the license file you have received.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.ButtonImportTitle">
+            <summary>
+            A localized string like "Import".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseFilesName">
+            <summary>
+            A localized string like "License files".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.AllFilesName">
+            <summary>
+            A localized string like "All files".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.CouldNotReadLicenseMessage">
+            <summary>
+            A localized string like "The license could not be read:".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseValidMessage">
+            <summary>
+            A localized string like "The license is valid.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseKeyNotValidMessage">
+            <summary>
+            A localized string like "The license key is not valid.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseExpiredMessage">
+            <summary>
+            A localized string like "The license is expired.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseCacheExpiredMessage">
+            <summary>
+            A localized string like "The local license cache is expired. Please connect to the internet.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseBoundElsewhereMessage">
+            <summary>
+            A localized string like "The license is bound to another id.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseBindingLimitReachedMessage">
+            <summary>
+            A localized string like "You have reached the maximum number of activations for this license.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseNotCachedMessage">
+            <summary>
+            A localized string like "Please connect to the internet to activate a license.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseInvalidMessage">
+            <summary>
+            A localized string like "The license is not valid.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseServerCommunicationErrorMessage">
+            <summary>
+            A localized string like "Unable to contact the license server.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.LicenseServerResponseErrorMessage">
+            <summary>
+            A localized string like "The license server returned an invalid response.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.AccessLicenseCacheErrorMessage">
+            <summary>
+            A localized string like "Unable to access license cache.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DetachLicenseInvalidResponseMessage">
+            <summary>
+            A localized string like "The license server returned an invalid response.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DetachLicenseSuccessfullMessage">
+            <summary>
+            A localized string like "The license binding was detached successfully.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DetachLicenseKeyNotFoundMessage">
+            <summary>
+            A localized string like "The license key is not valid.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DetachLicenseBindingNotFoundMessage">
+            <summary>
+            A localized string like "The license binding does not exist.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DetachLicenseNotAvailableMessage">
+            <summary>
+            A localized string like "The license binding can currently not be detached.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DetachLicenseAvailableAtMessage">
+            <summary>
+            A localized string like "The license binding can at earliest be detached at {0}.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoButtonTitle">
+            <summary>
+            A localized string like "You don't have a key yet? Request a Demo here".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoWindowTitle">
+            <summary>
+            A localized string like "Request Demo Key".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.ContactTitle">
+            <summary>
+            A localized string like "Contact".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.NameOrCompanyTitle">
+            <summary>
+            A localized string like "Name or Company".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.EMailTitle">
+            <summary>
+            A localized string like "E-Mail address".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.PhoneTitle">
+            <summary>
+            A localized string like "Phone".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.CityAndZipTitle">
+            <summary>
+            A localized string like "City / Zip".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.StreetAndNumberTitle">
+            <summary>
+            A localized string like "Straße, Hausnummer".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.DemoSendHint">
+            <summary>
+            A localized string like "The Demo Key will be sent to your E-Mail address.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.FillHighlightedFieldsMessage">
+            <summary>
+            A localized string like "Please fill all highlighted fields.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoSuccessMessage">
+            <summary>
+            A localized string like "The demo key was sent to your E-Mail address.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoAlreadyUsedMessage">
+            <summary>
+            A localized string like "A license for this application has already been used by your account.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoNotAvailableMessage">
+            <summary>
+            A localized string like "A demo is not available for this application.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoCustomerRegistrationFailedMessage">
+            <summary>
+            A localized string like "Unable to register your customer account.".
+            </summary>
+        </member>
+        <member name="P:Licensing.UserInteraction.Localization.RequestDemoFailedMessage">
+            <summary>
+            A localized string like "An error occured while requesting the demo key.".
+            </summary>
+        </member>
+        <member name="M:Licensing.UserInteraction.Localization.Translate(System.DateTime)">
+            <summary>
+            Converts a DateTime to a string using a locale specific format.
+            </summary>
+            <param name="dt">The DateTime struct to translate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.Localization.Set(System.String)">
+            <summary>
+            Automatically choose a predefined localization from a string like "de", "de-DE" or "en_US".
+            Returns true when the locale was recognized and set, otherwise false.
+            </summary>
+            <param name="locale">A locale in the format "de", "de-DE" or "en_US"</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.Localization.Set(System.Globalization.CultureInfo)">
+            <summary>
+            Automatically choose a predefined localization from the given CultureInfo object.
+            Returns true when a translation for the locale exists, otherwise false.
+            </summary>
+            <param name="culture">The CultureInfo object containing the target locale.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.Localization.AutoDetect">
+            <summary>
+            Automatically detect the CultureInfo from the current thread and returns whether a localization for the locale could be loaded.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Licensing.UserInteraction.Localization.SetEnglish">
+            <summary>
+            Use a predefined english localization for user interaction.
+            </summary>
+        </member>
+        <member name="M:Licensing.UserInteraction.Localization.SetGerman">
+            <summary>
+            Use a predefined german translation for user interaction.
+            </summary>
+        </member>
+        <member name="T:Licensing.Properties.Resources">
+            <summary>
+              Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+            </summary>
+        </member>
+        <member name="P:Licensing.Properties.Resources.ResourceManager">
+            <summary>
+              Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+            </summary>
+        </member>
+        <member name="P:Licensing.Properties.Resources.Culture">
+            <summary>
+              Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+              Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+            </summary>
+        </member>
+        <member name="P:Licensing.Properties.Resources.key_16xLG">
+            <summary>
+              Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Licensing.Properties.Resources.Lock_256x">
+            <summary>
+              Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

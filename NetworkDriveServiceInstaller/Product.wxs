@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?define ApplicationName = "Quasaro Drive"?>
+<?define CompanyName = "StieCon IT-Consulting GmbH"?>
+<?define ExeName = "QuasaroDRV"?>
+<?define ProgramDirName = "Quasaro DRV"?>         <!-- Replace all invalid path chars -->
+<?define LinkName = "Quasaro DRV"?>               <!-- Replace all invalid path chars -->
+<?define RegistryPath = "StieCon IT-Consulting GmbH\Quasaro-Drive"?>   <!-- Same as Strings.dat -> "RegistryKey" -->
+
+<?define DriveProjectPath = "NetworkDriveService"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*" Name="$(var.ApplicationName)" Language="1033" Version="!(bind.fileVersion.MainExecutable)" Manufacturer="$(var.CompanyName)" UpgradeCode="da321043-7049-4075-b2ce-13c2de4535d2">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <Icon Id="app_icon.ico" SourceFile="$(var.SolutionDir)$(var.DriveProjectPath)\Resources\app_icon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="app_icon.ico" />
+    
+    <WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="background.bmp" />
+
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+		<Feature Id="MainFeature" Title="$(var.ApplicationName)" Level="1">
+      <ComponentGroupRef Id="MainApplicationGroup"/>
+      <ComponentRef Id="JsonLibrary" />
+      <ComponentRef Id="log4netLibrary" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="DisableAutoUpdate" />
+      <ComponentRef Id="DisableAdvancedSettings" />
+      <ComponentRef Id="WebDavSizeKey" />
+		</Feature>
+    
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_40_OR_LATER_INSTALLED" />
+    <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again. Download: https://www.microsoft.com/de-de/download/details.aspx?id=17718">
+      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_40_OR_LATER_INSTALLED]]>
+    </Condition>
+
+    <Property Id="InstallerFileName" Value="DEFAULT" />
+
+    <Binary Id="InstallerCustomAction" SourceFile="$(var.SolutionDir)\InstallerCustomAction\bin\$(var.Configuration)\InstallerCustomAction.CA.dll" />
+    <CustomAction Id="GetInstallerFileName" BinaryKey="InstallerCustomAction" Impersonate="yes" DllEntry="GetInstallerFileName" Return="check" Execute="immediate" />
+
+    <CustomAction Id="LaunchApplication" Directory="INSTALLFOLDER" Execute="commit" Impersonate="yes" Return="asyncNoWait" ExeCommand="&quot;[INSTALLFOLDER]$(var.ExeName).exe&quot;" />
+    <InstallExecuteSequence>
+      <Custom Action="GetInstallerFileName" Before="InstallInitialize" />
+      <Custom Action="LaunchApplication" After="InstallInitialize">
+        UILevel > 2
+      </Custom>
+    </InstallExecuteSequence>
+  </Product>
+
+  <Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="$(var.ProgramDirName)">
+          <Directory Id="LangDe" Name="de" />
+          <Directory Id="Resources" Name="Resources" />
+        </Directory>
+
+        <Component Id="WebDavSizeKey" Guid="db8db6b4-0f23-480e-a7c7-09261027b109">
+          <RegistryValue Root="HKLM" Action="write" Key="SYSTEM\CurrentControlSet\Services\WebClient\Parameters" Name="FileSizeLimitInBytes" Value="4294967295" Type="integer" />
+        </Component>
+      </Directory>
+      
+      <Directory Id="ProgramMenuFolder">
+        <Component Id="ApplicationShortcut" Guid="7d85e7ce-8268-4c98-a0db-98ffbb8f6b11">
+          <Shortcut Id="ApplicationStartMenuShortcut"
+                    Name="$(var.LinkName)"
+                    Target="[INSTALLFOLDER]$(var.ExeName).exe"
+                    WorkingDirectory="INSTALLFOLDER"/>
+          <RemoveFolder Id="ProgramMenuFolder" On="uninstall"/>
+          <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="InstallDir" Name="InstallDir" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+          <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="InstalledFrom" Name="InstalledFrom" Type="string" Value="[InstallerFileName]" />
+        </Component>
+        <Component Id="DisableAutoUpdate" Guid="cfe50cbe-a825-43db-b9ff-d874be6c7982">
+          <Condition>(NOAUTOUPDATE)</Condition>
+          <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="DisableAutoUpdate" Name="DisableAutoUpdate" Type="integer" Value="[NOAUTOUPDATE]" />
+        </Component>
+        <Component Id="DisableAdvancedSettings" Guid="15b178ee-add0-4e5e-a43a-b2cbd22393a8">
+          <Condition>(NOADVANCEDSETTINGS)</Condition>
+          <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="DisableAdvancedSettings" Name="DisableAdvancedSettings" Type="integer" Value="[NOADVANCEDSETTINGS]" />
+        </Component>
+      </Directory>
+		</Directory>
+    
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_InstallDir" />
+	</Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="MainApplicationGroup">
+      <ComponentRef Id="MainApplication"/>
+      <ComponentRef Id="MainApplicationDe"/>
+      <ComponentRef Id="MainApplicationResources"/>
+    </ComponentGroup>
+    <Component Id="MainApplication" Guid="9c1ff43c-3772-49e5-948a-4e759b678485" Directory="INSTALLFOLDER">
+      <File KeyPath="yes" Id="MainExecutable" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\$(var.ExeName).exe" />
+      <File Id="DefaultConfigurationFile" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\$(var.ExeName).exe.config" />
+      <File Id="VisualElementsManifest" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\$(var.ExeName).VisualElementsManifest.xml" />
+      <File Id="ControlzEx.dll" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\ControlzEx.dll" />
+      <File Id="MahApps.Metro.dll" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\MahApps.Metro.dll" />
+      <File Id="System.Windows.Interactivity.dll" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\System.Windows.Interactivity.dll" />
+      <File Id="NetworkDriveServiceElevation.exe" Source="$(var.SolutionDir)\NetworkDriveServiceElevation\bin\$(var.Configuration)\NetworkDriveServiceElevation.exe" />
+    </Component>
+
+    <Component Id="MainApplicationDe" Guid="7071957d-8c45-4f2d-8b5b-a9f3b38d2eb3" Directory="LangDe">
+      <File KeyPath="yes" Id="MainApplication.resources.dll_de" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\de\$(var.ExeName).resources.dll" />
+    </Component>
+
+    <Component Id="MainApplicationResources" Guid="f1829e54-c79c-44c7-8b8b-e06ecd9cc5ff" Directory="Resources">
+      <File Id="about_title.png" Source="$(var.SolutionDir)\$(var.DriveProjectPath)\bin\$(var.Configuration)\Resources\about_title.png" />
+      <File KeyPath="yes" Id="app_icon.ico" Source="$(var.SolutionDir)\$(var.DriveProjectPath)\bin\$(var.Configuration)\Resources\app_icon.ico" />
+      <File Id="loading_window_icon.png" Source="$(var.SolutionDir)\$(var.DriveProjectPath)\bin\$(var.Configuration)\Resources\loading_window_icon.png" />
+      <File Id="notify_icon.ico" Source="$(var.SolutionDir)\$(var.DriveProjectPath)\bin\$(var.Configuration)\Resources\notify_icon.ico" />
+      <File Id="tile.png" Source="$(var.SolutionDir)\$(var.DriveProjectPath)\bin\$(var.Configuration)\Resources\tile.png" />
+      <File Id="tileSmall.png" Source="$(var.SolutionDir)\$(var.DriveProjectPath)\bin\$(var.Configuration)\Resources\tileSmall.png" />
+    </Component>
+
+    <Component Id="JsonLibrary" Guid="36599b7e-d34e-4486-8028-295940fde513" Directory="INSTALLFOLDER">
+      <File KeyPath="yes" Name="Newtonsoft.Json.dll" Id="Newtonsoft.Json.dll" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\Newtonsoft.Json.dll" />
+    </Component>
+
+    <Component Id="log4netLibrary" Guid="357d1bd3-f841-4eed-a3b4-2aee935622f7" Directory="INSTALLFOLDER">
+      <File KeyPath="yes" Name="log4net.dll" Id="log4net.dll" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\log4net.dll" />
+    </Component>
+  </Fragment>
+</Wix>

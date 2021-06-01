@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MainWindowListColumnConnectedTitle" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="MainWindowListColumnConnectOnStartupTitle" xml:space="preserve">
+    <value>Connect on startup</value>
+  </data>
+  <data name="MainWindowListColumnCredentialsSavedTitle" xml:space="preserve">
+    <value>Credentials saved</value>
+  </data>
+  <data name="MainWindowListColumnDriveLetterTitle" xml:space="preserve">
+    <value>Local drive letter</value>
+  </data>
+  <data name="MainWindowListColumnRemoteAddressTitle" xml:space="preserve">
+    <value>Remote address</value>
+  </data>
+  <data name="MainWindowListColumnUserNameTitle" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="MainWindowNetworkDrivesGroupTitle" xml:space="preserve">
+    <value>Network Drives</value>
+  </data>
+  <data name="MainWindowTitleBrandable" xml:space="preserve">
+    <value>{APPNAME} ({0})</value>
+    <comment>{0} = Version</comment>
+  </data>
+  <data name="MainWindowButtonAddDriveTitle" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="ButtonCloseTitle" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MainWindowButtonEditDriveTitle" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="MainWindowButtonReconnectAllTitle" xml:space="preserve">
+    <value>(Re-)connect all</value>
+  </data>
+  <data name="MainWindowButtonRemoveDriveTitle" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="MainWindowMenuAboutTitle" xml:space="preserve">
+    <value>_About</value>
+  </data>
+  <data name="MainWindowMenuAddDriveTitle" xml:space="preserve">
+    <value>_Add</value>
+  </data>
+  <data name="MainWindowMenuCheckForUpdatesTitle" xml:space="preserve">
+    <value>_Check for updates</value>
+  </data>
+  <data name="MainWindowMenuCloseTitle" xml:space="preserve">
+    <value>_Close</value>
+  </data>
+  <data name="MainWindowMenuConnectAllTitle" xml:space="preserve">
+    <value>(Re)_Connect all</value>
+  </data>
+  <data name="MainWindowMenuConnectingTitle" xml:space="preserve">
+    <value>_Connecting</value>
+  </data>
+  <data name="MainWindowMenuConnectSelectedTitle" xml:space="preserve">
+    <value>_Connect selected</value>
+  </data>
+  <data name="MainWindowMenuDisconnectAllTitle" xml:space="preserve">
+    <value>_Disconnect all</value>
+  </data>
+  <data name="MainWindowMenuDisconnectSelectedTitle" xml:space="preserve">
+    <value>_Disconnect selected</value>
+  </data>
+  <data name="MainWindowMenuDrivesTitle" xml:space="preserve">
+    <value>_Drives</value>
+  </data>
+  <data name="MainWindowMenuEditDriveTitle" xml:space="preserve">
+    <value>_Edit</value>
+  </data>
+  <data name="MainWindowMenuExportAllTitle" xml:space="preserve">
+    <value>E_xport all</value>
+  </data>
+  <data name="MainWindowMenuExportSelectedTitle" xml:space="preserve">
+    <value>E_xport selected</value>
+  </data>
+  <data name="MainWindowMenuImportTitle" xml:space="preserve">
+    <value>_Import</value>
+  </data>
+  <data name="MainWindowMenuOptionsTitle" xml:space="preserve">
+    <value>_Options</value>
+  </data>
+  <data name="MainWindowMenuRemoveDriveTitle" xml:space="preserve">
+    <value>_Remove</value>
+  </data>
+  <data name="MessageFatalError" xml:space="preserve">
+    <value>Fatal Error ({0}): {1}
+
+{2}</value>
+    <comment>{0} = Exception Type
+{1} = Error Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="AboutWindowAllRightsReservedTitle" xml:space="preserve">
+    <value>All rights reserved.</value>
+  </data>
+  <data name="AboutWindowCopyrightTitleBrandable" xml:space="preserve">
+    <value>Copyright ©  {COPYRIGHTYEAR} {VENDORNAME}.</value>
+  </data>
+  <data name="AboutWindowDeviceIdTitle" xml:space="preserve">
+    <value>DeviceID:</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutWindowVersionTitle" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="AutoUpdateButtonUpdateNowTitle" xml:space="preserve">
+    <value>Update now</value>
+  </data>
+  <data name="AutoUpdateCouldNotReachServerMessage" xml:space="preserve">
+    <value>Could not reach the update server.</value>
+  </data>
+  <data name="AutoUpdateDownloadCompleteMessage" xml:space="preserve">
+    <value>Download complete. Install now?</value>
+  </data>
+  <data name="AutoUpdateErrorMessage" xml:space="preserve">
+    <value>Error while updating ({0}):
+
+{1}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="AutoUpdateInvalidResponseMessage" xml:space="preserve">
+    <value>The update server returned an invalid response.</value>
+  </data>
+  <data name="AutoUpdateReceiveErrorMessage" xml:space="preserve">
+    <value>Could not receive from "{0}" ({1}):
+
+{2}</value>
+    <comment>{0} = Server URL
+{1} = Exception Type
+{2} = Exception Message
+{3} = Stack Trace</comment>
+  </data>
+  <data name="AutoUpdateTitleBrandable" xml:space="preserve">
+    <value>{APPNAME} Update</value>
+  </data>
+  <data name="AutoUpdateUpdateToVersionMessageBrandable" xml:space="preserve">
+    <value>{APPNAME} Version {0} is available. Would you like to update now?</value>
+    <comment>{0} =Version Number</comment>
+  </data>
+  <data name="AutoUpdateUpToDateMessageBrandable" xml:space="preserve">
+    <value>Your {APPNAME} Software is already up to date.</value>
+  </data>
+  <data name="ButtonAbortTitle" xml:space="preserve">
+    <value>Abort</value>
+  </data>
+  <data name="ButtonCancelTitle" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ButtonOkayTitle" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CredentialsWindowEnterCredentialsText" xml:space="preserve">
+    <value>Please enter your credentials below:</value>
+  </data>
+  <data name="CredentialsWindowPasswordTitle" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="CredentialsWindowTitle" xml:space="preserve">
+    <value>Credentials</value>
+  </data>
+  <data name="CredentialsWindowUserNameTitle" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="DriveWindowButtonCheckTitle" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="DriveWindowConnectOnLogin" xml:space="preserve">
+    <value>Connect on login</value>
+  </data>
+  <data name="DriveWindowDriveLetterTitle" xml:space="preserve">
+    <value>Local drive letter</value>
+  </data>
+  <data name="DriveWindowDriveLabelTitle" xml:space="preserve">
+    <value>Drive label</value>
+  </data>
+  <data name="DriveWindowEnterDriveLabelMessage" xml:space="preserve">
+    <value>Please enter a name for your drive.</value>
+  </data>
+  <data name="DriveWindowEnterRemoteAddressMessage" xml:space="preserve">
+    <value>Please enter a remote address.</value>
+  </data>
+  <data name="DriveWindowNoCredentialsMessage" xml:space="preserve">
+    <value>Username or Password are not specified. A connection to this drive might fail.</value>
+  </data>
+  <data name="DriveWindowPasswordTitle" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="DriveWindowRemoteAddressTitle" xml:space="preserve">
+    <value>Remote address</value>
+  </data>
+  <data name="DriveWindowSelectDriveLetterMessage" xml:space="preserve">
+    <value>Please select a drive letter.</value>
+  </data>
+  <data name="DriveWindowUserNameTitle" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="ExceptionDiskNotFound" xml:space="preserve">
+    <value>Unable to retrieve disk information for {0} while setting drive label.</value>
+    <comment>{0} = Drive Letter</comment>
+  </data>
+  <data name="ExceptionDriveLetterFormat" xml:space="preserve">
+    <value>The local drive letter may only be succeeded by a ":"-character.</value>
+  </data>
+  <data name="ExceptionDriveLetterNotSet" xml:space="preserve">
+    <value>The local drive letter must be set first.</value>
+  </data>
+  <data name="ExceptionDriveLetterOutOfRange" xml:space="preserve">
+    <value>The local drive letter must begin with a letter from A to Z.</value>
+  </data>
+  <data name="ExceptionNetworkDriveConnectionTimedOut" xml:space="preserve">
+    <value>Connection was not established after {0} seconds.</value>
+    <comment>{0} = Max wait time in Milliseconds</comment>
+  </data>
+  <data name="ExceptionNetworkDriveDisconnectionTimedOut" xml:space="preserve">
+    <value>Drive was not disconnected after {0} seconds.</value>
+    <comment>{0} = Max wait time in Milliseconds</comment>
+  </data>
+  <data name="ExceptionNetworkDriveLockedMessage" xml:space="preserve">
+    <value>The NetworkDrive {0} is currently locked.</value>
+    <comment>{0} = Drive Letter</comment>
+  </data>
+  <data name="ExceptionReceiveAuthApiErrorMessage" xml:space="preserve">
+    <value>API-Error while receiving authorization data: {0}</value>
+    <comment>{0} = Error Message</comment>
+  </data>
+  <data name="ExceptionRemoteAddressNotSet" xml:space="preserve">
+    <value>The remote address must be set first.</value>
+  </data>
+  <data name="ExceptionStaticLoadingWindowExists" xml:space="preserve">
+    <value>Another static instance of LoadingWindow is already in use.</value>
+  </data>
+  <data name="InitialConfigWindowIntroText" xml:space="preserve">
+    <value>Please select drives to be configured:</value>
+  </data>
+  <data name="InitialConfigWindowLabelTitle" xml:space="preserve">
+    <value>Label:</value>
+  </data>
+  <data name="InitialConfigWindowLettersConflictMessage" xml:space="preserve">
+    <value>Please select different drive letters for the folders or deselect one of them.</value>
+  </data>
+  <data name="InitialConfigWindowNoDrivesMessage" xml:space="preserve">
+    <value>Do you really want to create no initial network drives?</value>
+  </data>
+  <data name="InitialConfigWindowSaveErrorMessage" xml:space="preserve">
+    <value>Could not save network drives ({0}): {1}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="InitialConfigWindowSkipConfigMessage" xml:space="preserve">
+    <value>Do you really want to skip the automatic configuration?</value>
+  </data>
+  <data name="InitialConfigWindowTitleBrandable" xml:space="preserve">
+    <value>{APPNAME} - Initial Configuration</value>
+  </data>
+  <data name="LoadingWindowTitle" xml:space="preserve">
+    <value>Loading... Please wait</value>
+  </data>
+  <data name="MainWindowActionFailedMessage" xml:space="preserve">
+    <value>Unable to {0} drive "{1}": {2}</value>
+    <comment>{0} = Action Verb
+{1} = Drive Letter
+{2} = Error Message</comment>
+  </data>
+  <data name="MainWindowActionsPartiallyFailedMessage" xml:space="preserve">
+    <value>Action was not performed for all drives.</value>
+  </data>
+  <data name="MainWindowAddDriveDialogTitle" xml:space="preserve">
+    <value>Add network drive</value>
+  </data>
+  <data name="MainWindowDisconnectBeforeRemoveMessage" xml:space="preserve">
+    <value>Do want to disconnect the drives before removing?</value>
+  </data>
+  <data name="MainWindowEditDriveDialogTitle" xml:space="preserve">
+    <value>Edit network drive</value>
+  </data>
+  <data name="MainWindowExportErrorMessage" xml:space="preserve">
+    <value>Error exporting drives ({0}): {1}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="MainWindowExportProgressMessage" xml:space="preserve">
+    <value>Exporting drives...</value>
+  </data>
+  <data name="MainWindowImportCredentialsForText" xml:space="preserve">
+    <value>Credentials for "{0}"</value>
+    <comment>{0} = Domain</comment>
+  </data>
+  <data name="MainWindowImportErrorMessage" xml:space="preserve">
+    <value>Could not import drives ({0}): {1}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="MainWindowImportProgressMessage" xml:space="preserve">
+    <value>Importing drives...</value>
+  </data>
+  <data name="MainWindowImportTitle" xml:space="preserve">
+    <value>Import drives</value>
+  </data>
+  <data name="MainWindowNotAllDrivesRemovedMessage" xml:space="preserve">
+    <value>Not all drives could be removed.</value>
+  </data>
+  <data name="MainWindowRemoveDrivesMessage" xml:space="preserve">
+    <value>Do you really want to remove the following drives?</value>
+  </data>
+  <data name="MainWindowRemoveDrivesProgressMessage" xml:space="preserve">
+    <value>Removing drives drives...</value>
+  </data>
+  <data name="MainWindowRemoveDriveTitle" xml:space="preserve">
+    <value>Remove network drives</value>
+  </data>
+  <data name="MessageApplicationExpiredBrandable" xml:space="preserve">
+    <value>The expiration date of the application is exceeded. Please connect to the internet and try again.</value>
+  </data>
+  <data name="MessageConnectionSuccessfull" xml:space="preserve">
+    <value>Connection successfull.</value>
+  </data>
+  <data name="MessageCouldNotConnect" xml:space="preserve">
+    <value>Could not connect network drive "{0}":
+
+{1}</value>
+    <comment>{0} = Drive Letter
+{1} = Error Message</comment>
+  </data>
+  <data name="MessageDisconnectAllNetworkDrives" xml:space="preserve">
+    <value>Disconnect all network drives?</value>
+  </data>
+  <data name="MessageGenericError" xml:space="preserve">
+    <value>Unhandled Exception ({0}): {1}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message</comment>
+  </data>
+  <data name="MessageGenericErrorSource" xml:space="preserve">
+    <value>Unhandled Exception in {0} ({1}): {2}</value>
+    <comment>{0} = Source
+{1} = Exception Type
+{2} = Exception Message</comment>
+  </data>
+  <data name="MessageGenericErrorSourceAndStackTrace" xml:space="preserve">
+    <value>Unhandled Exception in {0} ({1}): {2}
+
+{3}</value>
+    <comment>{0} = Source
+{1} = Exception Type
+{2} = Exception Message
+{3} = Stack Trace</comment>
+  </data>
+  <data name="MessageNoAuthorizedDomains" xml:space="preserve">
+    <value>No authorized domains are available. Please connect to the internet and try again.</value>
+  </data>
+  <data name="MessageTitleCheckConnection" xml:space="preserve">
+    <value>Check connection</value>
+  </data>
+  <data name="MessageWaitForOperation" xml:space="preserve">
+    <value>Please wait for the current operation to be finished.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NotifyIconAboutTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="NotifyIconBackgroundHintTextBrandable" xml:space="preserve">
+    <value>{APPNAME} is now running in the background.
+
+Right-click this icon to open the window.</value>
+  </data>
+  <data name="NotifyIconConnectAllDrivesTitle" xml:space="preserve">
+    <value>(Re-)Connect all drives</value>
+  </data>
+  <data name="NotifyIconDisconnectAllDrivesTitle" xml:space="preserve">
+    <value>Disconnect all drives</value>
+  </data>
+  <data name="NotifyIconExitTitle" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="NotifyIconShowMainWindowTitle" xml:space="preserve">
+    <value>Show main window</value>
+  </data>
+  <data name="ProgressMessageCheckingConnection" xml:space="preserve">
+    <value>Checking connection...</value>
+  </data>
+  <data name="ProgressMessageConnectingDrive" xml:space="preserve">
+    <value>Connecting drive {0}...</value>
+    <comment>{0} = Drive Letter</comment>
+  </data>
+  <data name="ProgressMessageConnectingDrives" xml:space="preserve">
+    <value>Connecting drives...</value>
+  </data>
+  <data name="ProgressMessageDisconnectingDrive" xml:space="preserve">
+    <value>Disconnecting drive {0}...</value>
+    <comment>{0} = Drive Letter</comment>
+  </data>
+  <data name="ProgressMessageDisconnectingDrives" xml:space="preserve">
+    <value>Disconnecting drives...</value>
+  </data>
+  <data name="SettingsWindowAllowBetaTitle" xml:space="preserve">
+    <value>Allow Beta versions</value>
+  </data>
+  <data name="SettingsWindowApplicationGroupTitle" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="SettingsWindowAutoStartTitleBrandable" xml:space="preserve">
+    <value>Start {APPNAME} after user login</value>
+  </data>
+  <data name="SettingsWindowAutoUpdateTitle" xml:space="preserve">
+    <value>Check for updates at startup</value>
+  </data>
+  <data name="SettingsWindowLoadErrorMessage" xml:space="preserve">
+    <value>Error loading configuration ({0}): {1}
+
+{2}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="SettingsWindowOfficeGroupTitle" xml:space="preserve">
+    <value>Microsoft Office</value>
+  </data>
+  <data name="SettingsWindowPvExcelTitle" xml:space="preserve">
+    <value>Excel: Disable Protected View</value>
+  </data>
+  <data name="SettingsWindowPvPowerPointTitle" xml:space="preserve">
+    <value>PowerPoint: Disable Protected View</value>
+  </data>
+  <data name="SettingsWindowPvWordTitle" xml:space="preserve">
+    <value>Word: Disable Protected View</value>
+  </data>
+  <data name="SettingsWindowSaveErrorMessage" xml:space="preserve">
+    <value>Error saving configuration ({0}): {1}
+
+{2}</value>
+    <comment>{0} = Exception Type
+{1} = Exception Message
+{2} = Stack Trace</comment>
+  </data>
+  <data name="SettingsWindowTitleBrandable" xml:space="preserve">
+    <value>{APPNAME} Settings</value>
+  </data>
+  <data name="TitleCheckConnection" xml:space="preserve">
+    <value>Check connection</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="MessageWaitForOperationAndCloseWindows" xml:space="preserve">
+    <value>Please wait for the current operation to be finished and close all dialogs.</value>
+  </data>
+  <data name="MainWindowListColumnDriveLabelTitle" xml:space="preserve">
+    <value>Drive label</value>
+  </data>
+  <data name="ExceptionDriveLabelInvalid" xml:space="preserve">
+    <value>The drive label contains invalid characters.</value>
+  </data>
+  <data name="MessageRemoteAddressAlreadyInUse" xml:space="preserve">
+    <value>Another drive with the same remote address already exists.</value>
+  </data>
+  <data name="MainWindowMenuApplicationTitle" xml:space="preserve">
+    <value>_Application</value>
+  </data>
+  <data name="ToolTipEnvironmentVariables" xml:space="preserve">
+    <value>You can use environment variables like %USERNAME% here.</value>
+  </data>
+  <data name="SettingsWindowLanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="SettingsWindowLanguageGerman" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="SettingsWindowLanguageSystemDefault" xml:space="preserve">
+    <value>System default</value>
+  </data>
+  <data name="SettingsWindowLanguageTitle" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="MessageSettingsRestartRequiredBrandable" xml:space="preserve">
+    <value>For all changes to take effect you need to restart {APPNAME}.
+
+Do you want to restart now?</value>
+  </data>
+  <data name="SettingsWindowOnlyReconnectActiveDrives" xml:space="preserve">
+    <value>Only reconnect at startup connected drives</value>
+  </data>
+  <data name="SettingsWindowOfficeNotInstalledGroupTitle" xml:space="preserve">
+    <value>Microsoft Office (Not installed)</value>
+  </data>
+  <data name="NotifyIconShowLogFile" xml:space="preserve">
+    <value>Show log file</value>
+  </data>
+  <data name="MessageLicenseValid" xml:space="preserve">
+    <value>Your license is valid and allows access to the following domains:
+
+{0}</value>
+  </data>
+  <data name="MessageLicenseValidWithDate" xml:space="preserve">
+    <value>Your license is valid up to {0} and allows access to the following domains:
+
+{1}</value>
+    <comment>{0} = Expiration Date
+{1} = Allowed domains</comment>
+  </data>
+  <data name="MainWindowMenuLicenseInfoTitle" xml:space="preserve">
+    <value>License information</value>
+  </data>
+  <data name="HintAllDomains" xml:space="preserve">
+    <value>All domains</value>
+  </data>
+  <data name="CreditsWindowTitle" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="WNetErrorAccessDenied" xml:space="preserve">
+    <value>Access to the path denied.</value>
+  </data>
+  <data name="WNetErrorAuthorizationFailed" xml:space="preserve">
+    <value>Username or password wrong.</value>
+  </data>
+  <data name="WNetErrorCanceledByUser" xml:space="preserve">
+    <value>The operation was canceled by the user.</value>
+  </data>
+  <data name="WNetErrorLocalConflict" xml:space="preserve">
+    <value>The connection conflicts with a local configuration. This mostly happens when the drive letter is already in use or you have entered different credentials for the domain in another connection.</value>
+  </data>
+  <data name="WNetErrorNoNetwork" xml:space="preserve">
+    <value>No network connections available.</value>
+  </data>
+  <data name="WNetErrorNotSupported" xml:space="preserve">
+    <value>This type of network resource is not supported.</value>
+  </data>
+  <data name="WNetErrorPathNotFound" xml:space="preserve">
+    <value>The network path was not found.</value>
+  </data>
+  <data name="WNetErrorResourceBusy" xml:space="preserve">
+    <value>The given resource is currently beeing used.</value>
+  </data>
+  <data name="WNetErrorUnknownError" xml:space="preserve">
+    <value>An unknown error has occured. Please check your input and network connection and try it again.</value>
+  </data>
+  <data name="ActionVerbConnect" xml:space="preserve">
+    <value>connect</value>
+  </data>
+  <data name="ActionVerbDisconnect" xml:space="preserve">
+    <value>disconnect</value>
+  </data>
+  <data name="ActionVerbReConnect" xml:space="preserve">
+    <value>re-connect</value>
+  </data>
+  <data name="WNetErrorNoInformation" xml:space="preserve">
+    <value>No additional information supplied</value>
+  </data>
+  <data name="WNetErrorWithCode" xml:space="preserve">
+    <value>Error code {0} occured. Please try again later or contact your local IT support.</value>
+  </data>
+  <data name="CredentialsWindowEnterCredentialsForDomainText" xml:space="preserve">
+    <value>Please enter your credentials for "{0}":</value>
+    <comment>{0} =Domain</comment>
+  </data>
+  <data name="CredentialsWindowReEnterAfterFailDescription" xml:space="preserve">
+    <value>Login failed after {1} tries. Please re-enter your credentials for "{0}":</value>
+    <comment>{0} =Domain
+{1} = Tries</comment>
+  </data>
+  <data name="MessageInitialization" xml:space="preserve">
+    <value>Initializing application...</value>
+  </data>
+  <data name="MessageUnhandledExceptionBrandable" xml:space="preserve">
+    <value>A fatal error occured. Please check the log file of {APPNAME}.</value>
+  </data>
+  <data name="MessageConnectFailedAfterCheck" xml:space="preserve">
+    <value>The connection could not be established. Please check your network connection and connect the drive manually in the main window.</value>
+  </data>
+  <data name="InitialConfigWindowMissingDriveLetterMessage" xml:space="preserve">
+    <value>Please select a drive letter for all checked drives.</value>
+  </data>
+  <data name="WNetErrorDriveLetterInUse" xml:space="preserve">
+    <value>The drive letter is already in use.</value>
+  </data>
+  <data name="AdvancedSettingsButtonTitle" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="AdvancedSettingsWindowTitle" xml:space="preserve">
+    <value>Advanced Settings</value>
+  </data>
+  <data name="AdvancedSettingsPreloadMainWindow" xml:space="preserve">
+    <value>Preload main window</value>
+  </data>
+  <data name="AdvancedSettingsRestartWebClientButton" xml:space="preserve">
+    <value>Show "Restart WebClient service" button in main menu</value>
+  </data>
+  <data name="AdvancedSettingsUseFastWebDavCheck" xml:space="preserve">
+    <value>Use fast WebDAV checking for connectivity</value>
+  </data>
+  <data name="AdvancedSettingsUseWindowsApi" xml:space="preserve">
+    <value>Use Windows API calls instead of CLI</value>
+  </data>
+  <data name="MainWindowMenuRestartWebClientTitle" xml:space="preserve">
+    <value>Restart WebClient service</value>
+  </data>
+  <data name="MessageRestartWebClient" xml:space="preserve">
+    <value>This will reset all open connections and might lead to data loss. Please make sure you have no active file operations. Continue?</value>
+  </data>
+  <data name="MessageRunElevatedFailed" xml:space="preserve">
+    <value>Unable to execute command.</value>
+  </data>
+  <data name="AdvancedSettingsEnableShowLogMenu" xml:space="preserve">
+    <value>Show button to open log file</value>
+  </data>
+  <data name="MessageNotAllDrivesRestored" xml:space="preserve">
+    <value>Not all connections could be restored.</value>
+  </data>
+  <data name="MessageLicenseExpired" xml:space="preserve">
+    <value>Your license has expired or is not valid anymore.</value>
+  </data>
+  <data name="OpenSourceLicenseWindowTitle" xml:space="preserve">
+    <value>Open Source Licenses</value>
+  </data>
+  <data name="ShowLicenses" xml:space="preserve">
+    <value>Show Licenses</value>
+  </data>
+  <data name="ExportWindowEncryptionPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="ExportWindowEncryptionPasswordRepeat" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="ExportWindowPropertiesTitle" xml:space="preserve">
+    <value>Exported properties</value>
+  </data>
+  <data name="ExportWindowPropertyPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="ExportWindowPropertyUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="ExportWindowTitle" xml:space="preserve">
+    <value>Export drives</value>
+  </data>
+  <data name="ExportWindowUseEncryptionTitle" xml:space="preserve">
+    <value>Use encryption</value>
+  </data>
+  <data name="ExportWindowNoPasswordMessage" xml:space="preserve">
+    <value>Please enter a password or disable encryption.</value>
+  </data>
+  <data name="ExportWindowPasswordWithoutEncryptionMessage" xml:space="preserve">
+    <value>Exporting passwords without encryption is not allowed.</value>
+  </data>
+  <data name="MessagePasswordsDoNotMatch" xml:space="preserve">
+    <value>The passwords do not match.</value>
+  </data>
+  <data name="EnterPasswordDialogTitle" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="MainWindowImportPasswordMessage" xml:space="preserve">
+    <value>Please enter the password:</value>
+  </data>
+  <data name="MessageNetworkDriveStorageCorrupted" xml:space="preserve">
+    <value>Your network drive storage file is corrupt and needs to be reconfigured.</value>
+  </data>
+  <data name="MessageImportFailedNoDriveLetters" xml:space="preserve">
+    <value>Not all drives could be imported because there are no more drive letters available.</value>
+  </data>
+  <data name="MessageCannotAddNoDriveLetters" xml:space="preserve">
+    <value>Cannot add a new network drive while there are no drive letters available.</value>
+  </data>
+</root>
