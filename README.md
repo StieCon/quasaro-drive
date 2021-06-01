@@ -1,4 +1,4 @@
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/StieCon/quasaro-drive) ![GitHub](https://img.shields.io/github/license/StieCon/quasaro-drive) ![GitHub issues](https://img.shields.io/github/issues/StieCon/quasaro-drive) ![GitHub all releases](https://img.shields.io/github/downloads/StieCon/quasaro-drive/total) ![-Quasaro Logo-](images/logo.png)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/StieCon/quasaro-drive) ![GitHub](https://img.shields.io/github/license/StieCon/quasaro-drive) ![GitHub issues](https://img.shields.io/github/issues/StieCon/quasaro-drive) ![GitHub all releases](https://img.shields.io/github/downloads/StieCon/quasaro-drive/total)
 
 [![-Quasaro Logo-](images/logo.png)](https://quasaro.de)
 
