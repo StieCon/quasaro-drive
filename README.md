@@ -37,7 +37,7 @@ The main window shows a list of all configured network drives. You can connect a
 
 | Type                | Example Path               |
 |---------------------|----------------------------|
-| SMB (Windows Share) | \\192.168.100.3\Data       |
+| SMB (Windows Share) | \\\\192.168.100.3\Data       |
 | WebDAV              | https://example.org/webdav |
 |                     |                            |
 
