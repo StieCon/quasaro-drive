@@ -89,6 +89,7 @@ namespace QuasaroDRV.DriveManagement
 
             // list all error codes for which a retry is reasonable
             temporaryErrorCodes = new HashSet<int>();
+            temporaryErrorCodes.Add(53);
             temporaryErrorCodes.Add(67);
             temporaryErrorCodes.Add(170);
             temporaryErrorCodes.Add(1202);
