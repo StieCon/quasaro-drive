@@ -12,12 +12,11 @@ Execute the installer to install the application. Automatic configuration mechan
 
 ## Requrements
 Supported Windows versions:
--	Windows Server 2008 R2 with Service Pack 1
--	Windows XP with Service Pack 2
 -	Windows 7 or newer
+-	Windows Server 2019 or newer
 
 Dependencies:
--	.NET Framework 3.5
+-	.NET Framework 4.8
 
 ## Quick Start Guide
 
@@ -37,7 +36,7 @@ The main window shows a list of all configured network drives. You can connect a
 
 | Type                | Example Path               |
 |---------------------|----------------------------|
-| SMB (Windows Share) | \\\\192.168.100.3\Data       |
+| SMB (Windows Share) | \\\\192.168.100.3\Data     |
 | WebDAV              | https://example.org/webdav |
 |                     |                            |
 
@@ -125,6 +124,11 @@ This error is mostly caused by the Microsoft Windows credentials cache. Updating
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Contributors
+<a href="https://github.com/StieCon/quasaro-drive/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=StieCon/quasaro-drive" />
+</a>
 
 ## Project Information
 Official website: https://quasaro.de
