@@ -72,7 +72,7 @@ namespace QuasaroDRV
                     Branding.cachedAppId = "Quasaro-Drive";
                     Branding.cachedApplicationName = "Quasaro Drive";
                     Branding.cachedCompanyName = "StieCon IT-Consulting GmbH";
-                    Branding.cachedCopyrightYear = 2021;
+                    Branding.cachedCopyrightYear = 2025;
 
                     Branding.cachedSupportUrl = "quasaro.de";
                     Branding.cachedTelephone = "+49 6158 747700";
