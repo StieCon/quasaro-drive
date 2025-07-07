@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?define ApplicationName = "Quasaro Drive"?>
+﻿<?define ApplicationName = "Quasaro Drive"?>
 <?define CompanyName = "StieCon IT-Consulting GmbH"?>
 <?define ExeName = "QuasaroDRV"?>
 <?define ProgramDirName = "Quasaro DRV"?>         <!-- Replace all invalid path chars -->
@@ -9,12 +7,13 @@
 
 <?define DriveProjectPath = "NetworkDriveService"?>
 
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-	<Product Id="*" Name="$(var.ApplicationName)" Language="1033" Version="!(bind.fileVersion.MainExecutable)" Manufacturer="$(var.CompanyName)" UpgradeCode="da321043-7049-4075-b2ce-13c2de4535d2">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Package Name="$(var.ApplicationName)" Language="1033" Version="!(bind.fileVersion.MainExecutable)" Manufacturer="$(var.CompanyName)" UpgradeCode="da321043-7049-4075-b2ce-13c2de4535d2" InstallerVersion="200">
+		
 
     <Icon Id="app_icon.ico" SourceFile="$(var.SolutionDir)$(var.DriveProjectPath)\Resources\app_icon.ico" />
     <Property Id="ARPPRODUCTICON" Value="app_icon.ico" />
+		
     
     <WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />
     <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
@@ -24,7 +23,7 @@
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
 		<Feature Id="MainFeature" Title="$(var.ApplicationName)" Level="1">
-      <ComponentGroupRef Id="MainApplicationGroup"/>
+      <ComponentGroupRef Id="MainApplicationGroup" />
       <ComponentRef Id="JsonLibrary" />
       <ComponentRef Id="log4netLibrary" />
       <ComponentRef Id="ApplicationShortcut" />
@@ -32,29 +31,19 @@
       <ComponentRef Id="DisableAdvancedSettings" />
       <ComponentRef Id="WebDavSizeKey" />
 		</Feature>
-    
-    <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" />
-    <Condition Message="This application requires .NET Framework 4.8. Please install the .NET Framework then run this installer again. Download: https://www.microsoft.com/de-de/download/details.aspx?id=17718">
-      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED]]>
-    </Condition>
 
     <Property Id="InstallerFileName" Value="DEFAULT" />
 
-    <Binary Id="InstallerCustomAction" SourceFile="$(var.SolutionDir)\InstallerCustomAction\bin\$(var.Configuration)\InstallerCustomAction.CA.dll" />
-    <CustomAction Id="GetInstallerFileName" BinaryKey="InstallerCustomAction" Impersonate="yes" DllEntry="GetInstallerFileName" Return="check" Execute="immediate" />
-
     <CustomAction Id="LaunchApplication" Directory="INSTALLFOLDER" Execute="commit" Impersonate="yes" Return="asyncNoWait" ExeCommand="&quot;[INSTALLFOLDER]$(var.ExeName).exe&quot;" />
     <InstallExecuteSequence>
-      <Custom Action="GetInstallerFileName" Before="InstallInitialize" />
-      <Custom Action="LaunchApplication" After="InstallInitialize">
-        UILevel > 2
-      </Custom>
+      <Custom Action="LaunchApplication" After="InstallInitialize" Condition="UILevel &gt; 2" />
     </InstallExecuteSequence>
-  </Product>
+  </Package>
 
-  <Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
+  <Fragment><Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <ui:WixUI Id="WixUI_InstallDir" />
+	
+			<StandardDirectory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="$(var.ProgramDirName)">
           <Directory Id="LangDe" Name="de" />
           <Directory Id="Resources" Name="Resources" />
@@ -63,38 +52,31 @@
         <Component Id="WebDavSizeKey" Guid="db8db6b4-0f23-480e-a7c7-09261027b109">
           <RegistryValue Root="HKLM" Action="write" Key="SYSTEM\CurrentControlSet\Services\WebClient\Parameters" Name="FileSizeLimitInBytes" Value="4294967295" Type="integer" />
         </Component>
-      </Directory>
+      </StandardDirectory>
       
-      <Directory Id="ProgramMenuFolder">
+      <StandardDirectory Id="ProgramMenuFolder">
         <Component Id="ApplicationShortcut" Guid="7d85e7ce-8268-4c98-a0db-98ffbb8f6b11">
-          <Shortcut Id="ApplicationStartMenuShortcut"
-                    Name="$(var.LinkName)"
-                    Target="[INSTALLFOLDER]$(var.ExeName).exe"
-                    WorkingDirectory="INSTALLFOLDER"/>
-          <RemoveFolder Id="ProgramMenuFolder" On="uninstall"/>
+          <Shortcut Id="ApplicationStartMenuShortcut" Name="$(var.LinkName)" Target="[INSTALLFOLDER]$(var.ExeName).exe" WorkingDirectory="INSTALLFOLDER" />
+          <RemoveFolder Id="ProgramMenuFolder" On="uninstall" />
           <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="InstallDir" Name="InstallDir" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
-          <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="InstalledFrom" Name="InstalledFrom" Type="string" Value="[InstallerFileName]" />
+          <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="InstalledFrom" Name="InstalledFrom" Type="string" Value="[OriginalDatabase]" />
         </Component>
-        <Component Id="DisableAutoUpdate" Guid="cfe50cbe-a825-43db-b9ff-d874be6c7982">
-          <Condition>(NOAUTOUPDATE)</Condition>
+        <Component Id="DisableAutoUpdate" Guid="cfe50cbe-a825-43db-b9ff-d874be6c7982" Condition="(NOAUTOUPDATE)">
+          
           <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="DisableAutoUpdate" Name="DisableAutoUpdate" Type="integer" Value="[NOAUTOUPDATE]" />
         </Component>
-        <Component Id="DisableAdvancedSettings" Guid="15b178ee-add0-4e5e-a43a-b2cbd22393a8">
-          <Condition>(NOADVANCEDSETTINGS)</Condition>
+        <Component Id="DisableAdvancedSettings" Guid="15b178ee-add0-4e5e-a43a-b2cbd22393a8" Condition="(NOADVANCEDSETTINGS)">
+          
           <RegistryValue Root="HKLM" Key="Software\$(var.RegistryPath)" Id="DisableAdvancedSettings" Name="DisableAdvancedSettings" Type="integer" Value="[NOADVANCEDSETTINGS]" />
         </Component>
-      </Directory>
-		</Directory>
-    
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-    <UIRef Id="WixUI_InstallDir" />
-	</Fragment>
+      </StandardDirectory>
+		</Fragment>
 
   <Fragment>
     <ComponentGroup Id="MainApplicationGroup">
-      <ComponentRef Id="MainApplication"/>
-      <ComponentRef Id="MainApplicationDe"/>
-      <ComponentRef Id="MainApplicationResources"/>
+      <ComponentRef Id="MainApplication" />
+      <ComponentRef Id="MainApplicationDe" />
+      <ComponentRef Id="MainApplicationResources" />
     </ComponentGroup>
     <Component Id="MainApplication" Guid="9c1ff43c-3772-49e5-948a-4e759b678485" Directory="INSTALLFOLDER">
       <File KeyPath="yes" Id="MainExecutable" Source="$(var.SolutionDir)$(var.DriveProjectPath)\bin\$(var.Configuration)\$(var.ExeName).exe" />
